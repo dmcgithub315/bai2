@@ -252,19 +252,19 @@
                                 <ion-icon name="remove-outline"></ion-icon>
                             </div>
                             <div class="tab-bar">
-                                <button class="tab-button">マーケティング <br>
+                                <button class="tab-button" data-tab="#Marketing">マーケティング <br>
                                     戦略策定</button>
-                                <button class="tab-button">デジタル <br>
+                                <button class="tab-button" data-tab="#Communication">デジタル <br>
                                     コミュニケーション</button>
-                                <button class="tab-button">デジタル <br>
+                                <button class="tab-button" data-tab="#Content">デジタル <br>
                                     コンテンツ</button>
-                                <button class="tab-button">エンタープライズ <br>
+                                <button class="tab-button" data-tab="#Enterprise">エンタープライズ <br>
                                     EC</button>
-                                <button class="tab-button">コンタクト <br>
+                                <button class="tab-button" data-tab="#Contact">コンタクト <br>
                                     センター</button>
-                                <button class="tab-button">データ <br>
+                                <button class="tab-button" data-tab="#Data">データ <br>
                                     プラットフォーム</button>
-                                <button class="tab-button">ビジネスプロセス <br>
+                                <button class="tab-button" data-tab="#business">ビジネスプロセス <br>
                                     アウトソーシング</button>
                             </div>
                             <div id="Marketing" class="tab-content">
@@ -371,13 +371,13 @@
 
 </html>
 <script>
-    window.onload = function() {
-        document.querySelectorAll('button').forEach(function (item) {
-            item.addEventListener('click', function (){
-                alert('click');
-            })
-        })
-    }
+    // window.onload = function() {
+    //     document.querySelectorAll('button').forEach(function (item) {
+    //         item.addEventListener('click', function (){
+    //             alert('click');
+    //         })
+    //     })
+    // }
 
     // function openTab(tabName) {
     //     var i;
@@ -387,4 +387,17 @@
     //     }
     //     document.getElementById(tabName).style.display = "block";
     // }
+    function setActiveTab(tab_id) {
+            $('.tab-button').removeClass('active');
+            $("button[data-tab='" + tab_id +"']").addClass('active');
+
+            $('.tab-content').removeClass('active');
+            $(tab_id).addClass('active');
+        };
+        jQuery(document).ready(function($) {
+           $('.tab-button').click( function() {
+                var tab = $(this).data('tab');
+                setActiveTab(tab);
+            });
+        });
 </script>
